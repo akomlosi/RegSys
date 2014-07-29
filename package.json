@@ -4,7 +4,7 @@
   "description": "Registration system based on node.js",
   "main": "app.js",
   "scripts": {
-    "test": "mocha tests/*"
+    "test": "mocha -u tdd tests/*"
   },
   "repository": {
     "type": "git",

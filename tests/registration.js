@@ -18,7 +18,7 @@ suite('test Registration', function() {
 	test('registration must have a storage', function() {
 		(function() {
 			new Registration();
-		}).should.throw();
+		}).should.throw(new Error('Must have a storage'));
 	});
 
 	test('registration save user data', function() {
