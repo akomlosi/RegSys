@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/ebolatumor/RegSys/issues"
   },
-  "homepage": "https://github.com/ebolatumor/RegSys"
+  "homepage": "https://github.com/ebolatumor/RegSys",
+  "devDependencies": {
+    "mocha": "^1.21.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "express": "^4.7.2",
+    "jade": "^1.5.0"
+  }
 }
