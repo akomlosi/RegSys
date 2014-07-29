@@ -1,0 +1,24 @@
+{
+  "name": "RegSys",
+  "version": "0.0.1",
+  "description": "Registration system based on node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ebolatumor/RegSys"
+  },
+  "keywords": [
+    "reg",
+    "sys",
+    "nodejs"
+  ],
+  "author": "ebolatumor, btamas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebolatumor/RegSys/issues"
+  },
+  "homepage": "https://github.com/ebolatumor/RegSys"
+}
