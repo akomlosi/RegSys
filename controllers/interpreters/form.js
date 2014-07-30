@@ -20,4 +20,15 @@ FormInterpreter.prototype.getConvertedData = function( data ) {
 	};
 };
 
+FormInterpreter.prototype.dataRequirements = {
+	email: {
+		required: true,
+		regexp: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	},
+	password: {
+		required: true,
+		regexp: /^[a-zA-Z0-9]{8,}$/
+	}
+};
+
 module.exports = FormInterpreter;
