@@ -18,7 +18,9 @@ suite('test Google Interpreter', function() {
 
     test('should have an email', function() {
         _.bind(function() {
-            this.googleInterpreter.getConvertedData( {userData : { id: '123' }} );
+	        var invalidData = this.validGoogleData;
+	        delete this.validGoogleData.userData.email;
+            this.googleInterpreter.getConvertedData( invalidData );
         }, this).should.throwError('Missing required parameter userData.email');
     });
 

@@ -7,7 +7,7 @@ FormInterpreter.prototype.getConvertedData = function( data ) {
 		throw new Error('Missing required parameter email');
 	}
 
-	if ( _.isUndefined( data ) || _.isUndefined(data.password)) {
+	if ( _.isUndefined(data.password)) {
 		throw new Error('Missing required parameter password');
 	}
 

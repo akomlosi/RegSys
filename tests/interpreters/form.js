@@ -10,16 +10,19 @@ suite('test Form Interpreter', function() {
 		this.formInterpreter = new FormInterpreter();
 	});
 
-	test('should have be an email', function() {
-		(function() {
+	test('should have an email', function() {
+		_.bind(function() {
 			this.formInterpreter.getConvertedData();
-		}).should.throw(new Error('Missing required parameter email'));
+		},this).should.throwError('Missing required parameter email');
 	});
 
-	test('should have be an password', function() {
-		(function() {
-			this.formInterpreter.getConvertedData();
-		}).should.throw(new Error('Missing required parameter password'));
+	test('should have a password', function() {
+		_.bind(function() {
+			var formData = this.validFormData;
+			delete formData.password;
+
+			this.formInterpreter.getConvertedData( formData );
+		},this).should.throwError('Missing required parameter password');
 	});
 
 	test('should get correct data', function() {

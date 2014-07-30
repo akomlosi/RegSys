@@ -11,9 +11,9 @@ suite('test Facebook Interpreter', function() {
 	});
 
 	test('should have be an id', function() {
-		(function() {
+		_.bind(function() {
 			this.facebookInterpreter.getConvertedData();
-		}).should.throw(new Error('Missing required parameter facebook_id'));
+		}, this).should.throw(new Error('Missing required parameter facebook_id'));
 	});
 
 	test('should get correct data', function() {
