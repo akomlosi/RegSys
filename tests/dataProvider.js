@@ -9,7 +9,14 @@ var testData = {
 	validFormData: {
 		email: 'almafa@belmafa.com',
 		password: 'belmafa'
-	}
+	},
+
+    validGoogleData: {
+        userData: {
+            id: '123',
+            email: 'almafa@belmafa.com'
+        }
+    }
 };
 
 module.exports = function( testObject) {
