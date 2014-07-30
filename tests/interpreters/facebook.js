@@ -1,13 +1,11 @@
 var should = require('should'),
 	_ = require('underscore'),
+	dataProvider = require('../dataProvider'),
 	FacebookInterpreter = require('../../controllers/interpreters/facebook');
 
 suite('test Facebook Interpreter', function() {
 	setup(function () {
-		this.validFacebookData = {
-			id: '1234',
-			valami: 'masik valami'
-		};
+		dataProvider(this);
 
 		this.facebookInterpreter = new FacebookInterpreter();
 	});
@@ -15,11 +13,11 @@ suite('test Facebook Interpreter', function() {
 	test('should have be an id', function() {
 		(function() {
 			this.facebookInterpreter.getConvertedData();
-		}).should.throw(new Error('Missing required parameter id'));
+		}).should.throw(new Error('Missing required parameter facebook_id'));
 	});
 
 	test('should get correct data', function() {
 		var convertedData = this.facebookInterpreter.getConvertedData( this.validFacebookData );
-		convertedData.id.should.be.exactly( this.validFacebookData.id );
+		convertedData.api.id.should.be.exactly( this.validFacebookData.facebook_id );
 	});
 });

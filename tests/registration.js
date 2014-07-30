@@ -1,19 +1,11 @@
 var should = require('should'),
 	_ = require('underscore'),
+	dataProvider = require('./dataProvider'),
 	Registration = require('../controllers/registration');
 
 suite('test Registration', function() {
 	setup(function() {
-		this.validUserData = {
-			email: 'almafa@belmafa.com',
-			password: 'belmafa'
-		};
-
-		this.validFacebookUserData = {
-			email: 'almafa@belmafa.com',
-			id: 'almafa',
-			profile_picture: 'nemtudom.jpeg'
-		};
+		dataProvider(this);
 
 		this.storage = {};
 		this.registration = new Registration({
@@ -29,18 +21,17 @@ suite('test Registration', function() {
 
 	test('registration save user data', function() {
 		this.storage.save = _.bind(function( userData ) {
-			should(userData.email).eql( this.validUserData.email );
-			should(userData.password).eql( this.validUserData.password );
+			should(userData.email).eql( this.validFormData.email );
+			should(userData.password).eql( this.validFormData.password );
 		},this);
-		this.registration.register( this.validUserData );
+		this.registration.register( 'form', this.validFormData );
 	});
 
 	test('registration should register from facebook', function() {
 		this.storage.save = _.bind(function( userData ) {
-			should(userData.email).eql( this.validUserData.email );
-			should(userData.api.id).eql( this.validUserData.id );
+			should(userData.api.id).eql( this.validFacebookData.facebook_id );
 			should(userData.api.type).eql('facebook');
 		},this);
-		this.registration.register( this.validUserData );
+		this.registration.register( 'facebook', this.validFacebookData );
 	});
 });
