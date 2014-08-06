@@ -1,15 +1,23 @@
-var _ = require('underscore');
+var util = require('util'),
+
+	BaseInterpreter = require('./base');
 
 var FacebookInterpreter = function FacebookInterpreter() {};
 
-FacebookInterpreter.prototype.getConvertedData = function( data ) {
-	if ( _.isUndefined( data ) || _.isUndefined(data.facebook_id)) {
-		throw new Error('Missing required parameter facebook_id');
+util.inherits( FacebookInterpreter, BaseInterpreter );
+
+FacebookInterpreter.prototype.dataRequirements = {
+	facebook_id: {
+		required: true
 	}
+};
+
+FacebookInterpreter.prototype.getConvertedData = function( registrationData ) {
+	this.validateData( registrationData );
 
 	return {
 		api: {
-			id: data.facebook_id
+			id: registrationData.facebook_id
 		}
 	};
 };

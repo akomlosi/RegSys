@@ -10,19 +10,22 @@ suite('test Google Interpreter', function() {
         this.googleInterpreter = new GoogleInterpreter();
     });
 
-    test('should have an id', function() {
+    test('should have registration data', function() {
         _.bind(function() {
             this.googleInterpreter.getConvertedData();
-        }, this).should.throwError('Missing required parameter userData.id');
+        },this).should.throwError('Missing registration data');
     });
 
-    test('should have an email', function() {
-        _.bind(function() {
-	        var invalidData = this.validGoogleData;
-	        delete this.validGoogleData.userData.email;
-            this.googleInterpreter.getConvertedData( invalidData );
-        }, this).should.throwError('Missing required parameter userData.email');
-    });
+	_.each([ 'userData' ],function( fieldName ) {
+		test('should have a ' + fieldName, function () {
+			_.bind(function () {
+				var invalidData = this.validGoogleData;
+				delete this.validGoogleData[fieldName];
+
+				this.googleInterpreter.getConvertedData(invalidData);
+			}, this).should.throwError('Missing required parameter ' + fieldName);
+		});
+	}, this);
 
 
     test('should get correct google id', function() {

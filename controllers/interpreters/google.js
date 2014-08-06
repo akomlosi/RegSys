@@ -1,20 +1,25 @@
-var _ = require('underscore');
+var util = require('util'),
+
+	BaseInterpreter = require('./base');
 
 var GoogleInterpreter = function GoogleInterpreter() {};
 
-GoogleInterpreter.prototype.getConvertedData = function( data ) {
-    if ( _.isUndefined( data ) || _.isUndefined(data.userData.id)) {
-        throw new Error('Missing required parameter userData.id');
-    }
-    if ( _.isUndefined(data.userData.email)) {
-        throw new Error('Missing required parameter userData.email');
-    }
+util.inherits( GoogleInterpreter, BaseInterpreter );
+
+GoogleInterpreter.prototype.dataRequirements = {
+	userData: {
+		required: true
+	}
+};
+
+GoogleInterpreter.prototype.getConvertedData = function( registrationData ) {
+    this.validateData( registrationData );
 
     return {
         api: {
-            id: data.userData.id
+            id: registrationData.userData.id
         },
-        email: data.userData.email
+        email: registrationData.userData.email
     };
 };
 

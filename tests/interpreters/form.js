@@ -10,7 +10,7 @@ suite('test Form Interpreter', function() {
 		this.formInterpreter = new FormInterpreter();
 	});
 
-	test('should have an email', function() {
+	test('should have registration data', function() {
 		_.bind(function() {
 			this.formInterpreter.getConvertedData();
 		},this).should.throwError('Missing registration data');
