@@ -3,7 +3,7 @@ var _ = require('underscore');
 var BaseInterpreter = function() {};
 
 BaseInterpreter.prototype.validateData = function( registrationData ) {
-	if ( _.isUndefined( data ) ) {
+	if ( _.isUndefined( registrationData ) ) {
 		throw new Error('Missing registration data');
 	}
 
@@ -11,7 +11,7 @@ BaseInterpreter.prototype.validateData = function( registrationData ) {
 		if ( field.required &&
 			( _.isUndefined( registrationData[fieldName] ) || registrationData[fieldName] === '' ) )
 		{
-			throw new Error('Missing parameter ' + fieldName);
+			throw new Error('Missing required parameter ' + fieldName);
 		}
 
 		if ( !field.required &&
@@ -20,7 +20,7 @@ BaseInterpreter.prototype.validateData = function( registrationData ) {
 			return;
 		}
 
-		if ( field.regexp && field.regexp.test( fieldNameregistrationData[fieldName] ) ) {
+		if ( field.regexp && !field.regexp.test( registrationData[fieldName] ) ) {
 			throw new Error('Invalid field ' + fieldName);
 		}
 	}, this );

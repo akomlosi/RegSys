@@ -13,17 +13,37 @@ suite('test Form Interpreter', function() {
 	test('should have an email', function() {
 		_.bind(function() {
 			this.formInterpreter.getConvertedData();
-		},this).should.throwError('Missing required parameter email');
+		},this).should.throwError('Missing registration data');
 	});
 
-	test('should have a password', function() {
-		_.bind(function() {
-			var formData = this.validFormData;
-			delete formData.password;
 
-			this.formInterpreter.getConvertedData( formData );
-		},this).should.throwError('Missing required parameter password');
-	});
+	_.each([ 'email', 'password' ],function( fieldName ) {
+		test('should have a ' + fieldName, function () {
+			_.bind(function () {
+				var formData = this.validFormData;
+				delete formData[fieldName];
+
+				this.formInterpreter.getConvertedData(formData);
+			}, this).should.throwError('Missing required parameter ' + fieldName);
+		});
+	}, this);
+
+	_.each(
+		{
+			email: 'x',
+			password: 'alma'
+		},
+		function( fieldValue, fieldName ) {
+			test('should field ' + fieldName + ' be invalid', function () {
+				_.bind(function () {
+					var formData = this.validFormData;
+					formData[fieldName] = fieldValue;
+
+					this.formInterpreter.getConvertedData(formData);
+				}, this).should.throwError('Invalid field ' + fieldName);
+			});
+		}, this
+	);
 
 	test('should get correct data', function() {
 		var convertedData = this.formInterpreter.getConvertedData( this.validFormData );

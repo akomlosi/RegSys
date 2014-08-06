@@ -9,7 +9,7 @@ var dataProvider = function( testObject) {
 
 		validFormData: {
 			email: 'almafa@belmafa.com',
-			password: 'belmafa'
+			password: 'belmafa123'
 		},
 
 		validGoogleData: {

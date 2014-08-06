@@ -1,34 +1,33 @@
-var _ = require('underscore');
+var _ = require('underscore'),
+	util = require('util'),
+
+	BaseInterpreter = require('./base');
 
 var FormInterpreter = function FormInterpreter() {};
 
-FormInterpreter.prototype.getConvertedData = function( data ) {
-	if ( _.isUndefined( data ) || _.isUndefined(data.email)) {
-		throw new Error('Missing required parameter email');
-	}
-
-	if ( _.isUndefined(data.password)) {
-		throw new Error('Missing required parameter password');
-	}
-
-	return {
-		email: data.email,
-		password: data.password,
-		api: {
-			id: null
-		}
-	};
-};
+util.inherits( FormInterpreter, BaseInterpreter );
 
 FormInterpreter.prototype.dataRequirements = {
 	email: {
 		required: true,
-		regexp: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		regexp: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
 	},
 	password: {
 		required: true,
 		regexp: /^[a-zA-Z0-9]{8,}$/
 	}
+};
+
+FormInterpreter.prototype.getConvertedData = function( registrationData ) {
+	this.validateData( registrationData );
+
+	return {
+		email: registrationData.email,
+		password: registrationData.password,
+		api: {
+			id: null
+		}
+	};
 };
 
 module.exports = FormInterpreter;
