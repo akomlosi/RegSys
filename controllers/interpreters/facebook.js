@@ -2,7 +2,7 @@ var util = require('util'),
 
 	BaseInterpreter = require('./base');
 
-var FacebookInterpreter = function FacebookInterpreter() {};
+var FacebookInterpreter = function() {};
 
 util.inherits( FacebookInterpreter, BaseInterpreter );
 

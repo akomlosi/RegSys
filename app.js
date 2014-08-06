@@ -3,7 +3,7 @@ var express = require('express');
 	bodyParser = require('body-parser'),
 
 	Registration = require('./controllers/registration'),
-	registration = new Registration(),
+	registration = new Registration( { storage: {} }),
 
 	app = express();
 

@@ -4,7 +4,9 @@
   "description": "Registration system based on node.js",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -u tdd tests/*"
+    "test": "mocha -u tdd tests/*",
+	  "coverage": "node_modules/.bin/istanbul cover --dir ./reports node_modules/.bin/_mocha -- -u tdd -R spec tests/*",
+	  "sonar": "~/Downloads/sonar-runner-2.4/bin/sonar-runner"
   },
   "repository": {
     "type": "git",
@@ -22,13 +24,34 @@
   },
   "homepage": "https://github.com/ebolatumor/RegSys",
   "devDependencies": {
-    "mocha": "^1.21.3",
+    "browserify": "^4.2.3",
+    "chai": "^1.9.1",
+    "istanbulify": "^0.1.0",
+    "karma": "^0.12.19",
+    "karma-browserify": "^0.2.1",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cli": "0.0.4",
+    "karma-coverage": "^0.2.4",
+    "karma-mocha": "^0.1.6",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^1.21.0",
     "should": "^4.0.4",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0",
     "underscore": "^1.6.0"
   },
   "dependencies": {
     "body-parser": "^1.5.2",
     "express": "^4.7.2",
     "jade": "^1.5.0"
-  }
+  },
+	"config": {
+		"blanket": {
+			"pattern": "*",
+			"data-cover-never": "node_modules",
+			"data-cover-reporter-options": {
+				"shortnames": true
+			}
+		}
+	}
 }

@@ -3,7 +3,7 @@ var _ = require('underscore'),
 
 	BaseInterpreter = require('./base');
 
-var FormInterpreter = function FormInterpreter() {};
+var FormInterpreter = function() {};
 
 util.inherits( FormInterpreter, BaseInterpreter );
 
@@ -15,6 +15,9 @@ FormInterpreter.prototype.dataRequirements = {
 	password: {
 		required: true,
 		regexp: /^[a-zA-Z0-9]{8,}$/
+	},
+	nickname: {
+		required: false
 	}
 };
 

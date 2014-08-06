@@ -2,6 +2,10 @@ var _ = require('underscore');
 
 var BaseInterpreter = function() {};
 
+/**
+ * Validate interpreters data
+ * @param registrationData {Object} Contains the registration data
+ */
 BaseInterpreter.prototype.validateData = function( registrationData ) {
 	if ( _.isUndefined( registrationData ) ) {
 		throw new Error('Missing registration data');

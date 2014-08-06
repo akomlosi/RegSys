@@ -2,7 +2,7 @@ var util = require('util'),
 
 	BaseInterpreter = require('./base');
 
-var GoogleInterpreter = function GoogleInterpreter() {};
+var GoogleInterpreter = function() {};
 
 util.inherits( GoogleInterpreter, BaseInterpreter );
 
