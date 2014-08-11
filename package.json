@@ -4,7 +4,9 @@
   "description": "Registration system based on node.js",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -u tdd tests/*"
+    "test": "mocha -u tdd tests/*",
+    "coverage": "node_modules/.bin/istanbul cover --dir ./reports node_modules/.bin/_mocha -- -u tdd -R spec tests/*",
+    "sonar": "~/Downloads/sonar-runner-2.4/bin/sonar-runner"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "browserify": "^4.2.3",
     "chai": "^1.9.1",
+    "istanbul": "^0.3.0",
     "istanbulify": "^0.1.0",
     "karma": "^0.12.19",
     "karma-browserify": "^0.2.1",
@@ -43,13 +46,13 @@
     "express": "^4.7.2",
     "jade": "^1.5.0"
   },
-	"config": {
-		"blanket": {
-			"pattern": "*",
-			"data-cover-never": "node_modules",
-			"data-cover-reporter-options": {
-				"shortnames": true
-			}
-		}
-	}
+  "config": {
+    "blanket": {
+      "pattern": "*",
+      "data-cover-never": "node_modules",
+      "data-cover-reporter-options": {
+        "shortnames": true
+      }
+    }
+  }
 }
