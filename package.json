@@ -4,9 +4,7 @@
   "description": "Registration system based on node.js",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -u tdd tests/*",
-	  "coverage": "node_modules/.bin/istanbul cover --dir ./reports node_modules/.bin/_mocha -- -u tdd -R spec tests/*",
-	  "sonar": "~/Downloads/sonar-runner-2.4/bin/sonar-runner"
+    "test": "mocha -u tdd tests/*"
   },
   "repository": {
     "type": "git",
