@@ -29,7 +29,7 @@ Registration.prototype.register = function( registrationType, userData ) {
 };
 
 Registration.prototype.isUserExists = function( userData ) {
-	return !this.storage.getUsers( userData.id, userData.email );
+	return !!this.storage.getUsers( userData.id, userData.email );
 };
 
 Registration.prototype.save = function( userData ) {

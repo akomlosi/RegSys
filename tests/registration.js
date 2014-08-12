@@ -13,9 +13,8 @@ suite('test Registration', function() {
 				this.users.push( userData );
 			},
 			getUsers: function( id, email ) {
-				return this.users
 				for(var i = 0; i < this.users.length; i++) {
-					if ( this.users[i].api.id === userData.api.id || this.users[i].email === userData.email ) {
+					if ( this.users[i].api.id === id || this.users[i].email === email ) {
 						return this.users[i];
 					}
 				}
@@ -59,8 +58,8 @@ suite('test Registration', function() {
 
 	test('should not registered the same user', function() {
 		this.registration.register( 'form', this.validFormData );
-		(function() {
+		(_.bind(function() {
 			this.registration.register( 'form', this.validFormData );
-		}).should.throw(new Error('User already exists'));
+		},this)).should.throw(new Error('User already exists'));
 	});
 });
