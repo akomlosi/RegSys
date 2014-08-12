@@ -21,7 +21,15 @@ Registration.prototype.register = function( registrationType, userData ) {
 	convertedData.api = _.extend(convertedData.api, {
 		type: registrationType
 	});
+
+	if ( this.isUserExists( convertedData ) ) {
+		throw new Error('User already exists');
+	}
 	this.save( convertedData );
+};
+
+Registration.prototype.isUserExists = function( userData ) {
+	return !this.storage.getUsers( userData.id, userData.email );
 };
 
 Registration.prototype.save = function( userData ) {
