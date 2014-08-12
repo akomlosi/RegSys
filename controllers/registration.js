@@ -37,9 +37,11 @@ Registration.prototype.save = function( userData ) {
 	this.storage.save( userData );
 };
 
-//Registration.prototype.registerWithForm = function(req, res) {
-//	var userData = req.body.params;
-//	this.register( 'form', userData );
-//};
+/**
+Registration.prototype.registerWithForm = function(req, res) {
+	var userData = req.body.params;
+	this.register( 'form', userData );
+};
+*/
 
 module.exports = Registration;
