@@ -7,7 +7,7 @@ var FacebookInterpreter = function() {};
 util.inherits( FacebookInterpreter, BaseInterpreter );
 
 FacebookInterpreter.prototype.dataRequirements = {
-	facebook_id: {
+	facebook_id: { // jshint ignore:line
 		required: true
 	}
 };
@@ -17,7 +17,7 @@ FacebookInterpreter.prototype.getConvertedData = function( registrationData ) {
 
 	return {
 		api: {
-			id: registrationData.facebook_id
+			id: registrationData.facebook_id // jshint ignore:line
 		}
 	};
 };

@@ -1,4 +1,4 @@
-var should = require('should'),
+var should = require('should'), // jshint ignore:line
     _ = require('underscore'),
     dataProvider = require('../dataProvider'),
     GoogleInterpreter = require('../../controllers/interpreters/google');

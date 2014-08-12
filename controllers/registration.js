@@ -8,15 +8,16 @@ var Registration = function( options ) {
 };
 
 Registration.prototype.register = function( registrationType, userData ) {
+	var InterpreterModule;
 	try {
-		var InterpreterModul = require('./interpreters/' + registrationType);
+		InterpreterModule = require('./interpreters/' + registrationType);
 	}
 	catch(e) {
 		throw e;
 	}
 
-	var interpreterModul = new InterpreterModul(),
-		convertedData = interpreterModul.getConvertedData( userData );
+	var interpreterModule = new InterpreterModule(),
+		convertedData = interpreterModule.getConvertedData( userData );
 
 	convertedData.api = _.extend(convertedData.api, {
 		type: registrationType

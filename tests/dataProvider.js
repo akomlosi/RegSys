@@ -3,7 +3,7 @@ var _ = require('underscore');
 var dataProvider = function( testObject) {
 	var testData = {
 		validFacebookData: {
-			facebook_id: '1234',
+			facebook_id: '1234', // jshint ignore:line
 			valami: 'masik valami'
 		},
 

@@ -1,4 +1,4 @@
-var should = require('should'),
+var should = require('should'), // jshint ignore:line
 	_ = require('underscore'),
 	dataProvider = require('../dataProvider'),
 	FacebookInterpreter = require('../../controllers/interpreters/facebook');
@@ -29,6 +29,6 @@ suite('test Facebook Interpreter', function() {
 
 	test('should get correct data', function() {
 		var convertedData = this.facebookInterpreter.getConvertedData( this.validFacebookData );
-		convertedData.api.id.should.be.exactly( this.validFacebookData.facebook_id );
+		convertedData.api.id.should.be.exactly( this.validFacebookData.facebook_id ); // jshint ignore:line
 	});
 });

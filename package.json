@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha -u tdd tests/*",
     "coverage": "node_modules/.bin/istanbul cover --dir ./reports node_modules/.bin/_mocha -- -u tdd -R spec tests/*",
-    "sonar": "~/Downloads/sonar-runner-2.4/bin/sonar-runner"
+    "sonar": "~/Downloads/sonar-runner-2.4/bin/sonar-runner",
+	"jshint": "node_modules/.bin/jshint controllers/* tests/*",
+	"fullreport": "npm run-script jshint && npm run-script coverage && npm run-script sonar"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "chai": "^1.9.1",
     "istanbul": "^0.3.0",
     "istanbulify": "^0.1.0",
+    "jshint": "^2.5.3",
     "karma": "^0.12.19",
     "karma-browserify": "^0.2.1",
     "karma-chrome-launcher": "^0.1.4",

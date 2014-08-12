@@ -1,5 +1,4 @@
-var _ = require('underscore'),
-	util = require('util'),
+var util = require('util'),
 
 	BaseInterpreter = require('./base');
 

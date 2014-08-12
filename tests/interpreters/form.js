@@ -1,4 +1,4 @@
-var should = require('should'),
+var should = require('should'), // jshint ignore:line
 	_ = require('underscore'),
 	dataProvider = require('../dataProvider'),
 	FormInterpreter = require('../../controllers/interpreters/form');
@@ -49,6 +49,6 @@ suite('test Form Interpreter', function() {
 		var convertedData = this.formInterpreter.getConvertedData( this.validFormData );
 		convertedData.email.should.be.exactly( this.validFormData.email );
 		convertedData.password.should.be.exactly( this.validFormData.password );
-		(convertedData.api.id === null).should.be.true;
+		(convertedData.api.id === null).should.be.true; // jshint ignore:line
 	});
 });

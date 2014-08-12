@@ -27,9 +27,10 @@ suite('test Registration', function() {
 	});
 
 	test('registration must have a storage', function() {
-		(function() {
-			new Registration();
-		}).should.throw(new Error('Must have a storage'));
+		var testFunction = function() {
+			this.registration = new Registration();
+		};
+		testFunction.should.throw(new Error('Must have a storage'));
 	});
 
 	test('registration save user data', function() {
@@ -42,7 +43,7 @@ suite('test Registration', function() {
 
 	test('registration should register from facebook', function() {
 		this.storage.save = _.bind(function( userData ) {
-			should(userData.api.id).eql( this.validFacebookData.facebook_id );
+			should(userData.api.id).eql( this.validFacebookData.facebook_id ); // jshint ignore:line
 			should(userData.api.type).eql('facebook');
 		},this);
 		this.registration.register( 'facebook', this.validFacebookData );

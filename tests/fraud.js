@@ -1,10 +1,9 @@
 var chai = require('chai'),
-	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 	assert = chai.assert,
 	_ = require('underscore'),
 
-	Fraud = require('../controllers/fraud')
+	Fraud = require('../controllers/fraud');
 
 chai.use(sinonChai);
 
@@ -12,7 +11,7 @@ suite('test Fraud', function() {
 	setup(function() {
 		this.storage = {
 			getRegistrations: function() {
-				return this.registrationData
+				return this.registrationData;
 			},
 			registrationData: []
 		};
@@ -25,7 +24,7 @@ suite('test Fraud', function() {
 	test('registration must have a storage', function() {
 
 		assert.throw(function() {
-			new Fraud();
+			this.fraud = new Fraud();
 		}, 'Must have a storage');
 	});
 
